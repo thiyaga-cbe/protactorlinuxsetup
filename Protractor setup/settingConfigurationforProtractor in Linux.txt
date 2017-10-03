@@ -1,0 +1,49 @@
+Mozilla Firefox 55.0
+Protractor - Version 5.1.2
+Node - v6.11.3
+NPM - Version 3.10.10
+
+Xvfb settings
+Kill the previous setting
+ps -aux | grep Xvfb
+kill -9 PID
+sudo rm /tmp/.X11-unix/X99
+
+export DISPLAY=:99
+Xvfb :99 -ac -screen 0 1280x1024x24 &
+
+
+
+sudo npm install webdriver-manager -g
+sudo webdriver-manager update
+sudo webdriver-manager start
+
+After installing the webdriver-manager, it will show the version
+webdriver-manager: using global installed version 12.0.6
+
+Config File
+// An example configuration file.
+exports.config = {
+//  directConnect: true,
+
+seleniumAddress: 'http://localhost:4444/wd/hub',
+
+  // Capabilities to be passed to the webdriver instance.
+  capabilities: {
+    'browserName': 'firefox'
+  },
+
+  // Framework to use. Jasmine is recommended.
+  framework: 'jasmine',
+
+  // Spec patterns are relative to the current working directory when
+  // protractor is called.
+  specs: ['example_spec.js'],
+
+  // Options to be passed to Jasmine.
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 30000
+  }
+};
+
+
